@@ -18,4 +18,6 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [Test::class, 'translate']);
+Route::group(["middleware" => "multilang"], function () {
+    Route::get('/', [Test::class, 'translate'])->name('home');
+});
